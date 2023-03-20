@@ -15,19 +15,21 @@
         flex-direction: column;
         gap: 2rem;
         width: 100%;
-        div{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start; 
-            gap: .5rem;
-
-        }
+        margin-bottom: 2rem;
+       
 }
 }
 #from, #to {
     width: 100%;
 }
+label{
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+   
+    
+}
 .continue-btn{
-    margin-top: 2rem;
-    cursor: pointer;
+    
 }
