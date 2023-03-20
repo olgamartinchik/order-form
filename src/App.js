@@ -1,9 +1,11 @@
 import "./App.scss";
+import { Form } from "./components/Form/Form";
 
 function App() {
   return (
     <div className='App'>
-      <h1>Order form</h1>
+      <h2>Форма заказа</h2>
+      <Form />
     </div>
   );
 }

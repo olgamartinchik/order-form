@@ -1,0 +1,33 @@
+.form-container{
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+.rout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .input-container{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            gap: .5rem;
+
+        }
+}
+}
+#from, #to {
+    width: 100%;
+}
+.continue-btn{
+    margin-top: 2rem;
+    cursor: pointer;
+}
