@@ -53,7 +53,7 @@ const FormMap = (props) => {
             const boundedBy = route
               .getActiveRoute()
               .properties.get("boundedBy");
-            console.log("route.getActiveRoute()", route.getActiveRoute());
+            console.log("boundedBy", boundedBy);
             const newPrice = calculate(
               Math.round(length.value / 1000),
               DELIVERY_TARIFF,
