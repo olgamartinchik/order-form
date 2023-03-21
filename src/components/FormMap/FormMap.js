@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   YMaps,
   Map,
@@ -48,10 +48,10 @@ const FormMap = () => {
             const length = route.getActiveRoute().properties.get("distance");
             const duration = route.getActiveRoute().properties.get("duration");
 
-            const boundedBy = route
+            const newDoundedBy = route
               .getActiveRoute()
               .properties.get("boundedBy");
-            console.log("boundedBy", boundedBy);
+
             const newPrice = calculate(
               Math.round(length.value / 1000),
               DELIVERY_TARIFF,
@@ -59,10 +59,11 @@ const FormMap = () => {
             );
 
             setPrice(newPrice);
-            setBoundedBy(boundedBy);
+            setBoundedBy(newDoundedBy);
             setDistance(length.text);
             setTime(duration.text);
             console.log("ymaps", ymaps);
+            console.log("boundedBy", boundedBy);
 
             ymaps.geocode(boundedBy[0]).then((res) => {
               const firstGeoObject =
