@@ -151,11 +151,11 @@ const FormMap = (props) => {
           {time}
         </p>
       )}
-      {/* {from && to && (
+      {from && to && (
         <p>
           from: {from}, to: {to}
         </p>
-      )} */}
+      )}
     </div>
   );
 };
