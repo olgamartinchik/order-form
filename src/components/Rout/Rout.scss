@@ -4,32 +4,23 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
+    
 }
 .rout-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex: 1;
     
-    .input-container{
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        width: 100%;
-        margin-bottom: 2rem;
-       
+
 }
-}
-#from, #to {
-    width: 100%;
-}
-label{
-    text-align: start;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-   
-    
-}
+
 .continue-btn{
     
+}
+@media(max-width: 1080px){
+    .form-container{
+        align-items: center;
+        flex-direction: column;
+    }
 }
