@@ -7,7 +7,7 @@ import {
 } from "@pbe/react-yandex-maps";
 import "./FormMap.scss";
 
-const FormMap = (props) => {
+const FormMap = () => {
   const yMapsState = {
     apikey: "3e81625e-57df-45de-9974-eb3b13e85ceb",
     ns: "use-load-option",
@@ -18,9 +18,7 @@ const FormMap = (props) => {
     zoom: 9,
     controls: ["zoomControl"],
   };
-  // const ymaps = useYMaps(["Map"]);
-  const map = useRef(null);
-  // const ymaps = null;
+
   const [ymaps, setYmaps] = useState(null);
 
   const [price, setPrice] = useState(null);
