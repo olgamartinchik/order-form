@@ -23,15 +23,6 @@ const FormMap = (props) => {
   // const ymaps = null;
   const [ymaps, setYmaps] = useState(null);
 
-  // constructor() {
-  //   super();
-  //   this.
-  //   this.yamps = null;
-  //   // this.routePanel = null;
-  //   this.init = this.init.bind(this);
-  //   // this.createRoutPanel = this.createRoutPanel.bind(this);
-
-  // }
   const [price, setPrice] = useState(null);
   const [distance, setDistance] = useState(null);
   const [from, setFrom] = useState(null);

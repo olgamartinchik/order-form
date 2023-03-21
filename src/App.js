@@ -1,6 +1,5 @@
 import "./App.scss";
-import { Form } from "./components/Form/Form";
-import FormMap from "./components/FormMap/FormMap";
+import Form from "./components/Form/Form";
 
 function App() {
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import "./Rout.scss";
 import FormMap from "../FormMap/FormMap";
 
-export const Rout = () => {
+const Rout = () => {
   const handleContinue = (e) => {
     e.preventDefault();
     console.log("state");
@@ -20,3 +20,4 @@ export const Rout = () => {
     </div>
   );
 };
+export default Rout;
