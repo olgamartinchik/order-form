@@ -94,6 +94,7 @@ const FormMap = (props) => {
                 distance,
                 from,
                 to,
+                time,
                 auto: props.typeAuto,
               })
             );
