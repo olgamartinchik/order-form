@@ -1,7 +1,7 @@
 import { Actions } from "../../constants";
 
 export const AddFormAction = (form) => (dispatch, getState) => {
-  const { Form } = getState();
+  //   const { Form } = getState();
 
   //   const hasTodo = todos.find((item) => item.todo === todo);
   if (form) {
