@@ -20,8 +20,8 @@ export const RATIO_PER_KM = {
   business: 2,
   vip: 3,
 };
-export const API_KEY = "dd860581-f55b-46fd-b520-49cf11337c2e";
-export const API_KEY2 = "1c324abd-4386-42ae-95df-be1b518bad77";
+export const API_KEY2 = "dd860581-f55b-46fd-b520-49cf11337c2e";
+export const API_KEY = "1c324abd-4386-42ae-95df-be1b518bad77";
 
 export const Actions = {
   //   ADD_FROM: "ADD_FROM",
