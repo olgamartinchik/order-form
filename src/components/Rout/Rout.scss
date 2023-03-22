@@ -14,9 +14,20 @@
     
 
 }
+.auto-type{
+display: flex;
+flex-direction: column;
+width: 100%;
+gap: .5rem;
+}
+.label{
+    display: flex;
+    gap: .2rem;
+    cursor: pointer;
+}
 
 
-@media(max-width: 1080px){
+@media(max-width: 900px){
     .form-container{
         align-items: center;
         flex-direction: column;
