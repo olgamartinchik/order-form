@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { YMaps, Map, RoutePanel } from "@pbe/react-yandex-maps";
 import "./FormMap.scss";
-import { BASE_TARIFF_LESS_50_KM, RATIO_PER_KM, API_KEY } from "../../constants";
+import {
+  BASE_TARIFF_LESS_50_KM,
+  RATIO_PER_KM,
+  API_KEY,
+} from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 
@@ -32,7 +36,6 @@ const FormMap = (props) => {
     if (ref) {
       ref.routePanel.options.set({
         types: { auto: true },
-        autofocus: false,
       });
 
       ref.routePanel
@@ -132,6 +135,7 @@ const FormMap = (props) => {
             <RoutePanel
               instanceRef={(ref) => createRoutPanel(ref)}
               options={{
+                autofocus: false,
                 float: "right",
                 showHeader: true,
                 title: "Расчёт поездки",
@@ -149,17 +153,6 @@ const FormMap = (props) => {
           </Map>
         </div>
       </YMaps>
-      {/* {distance && price && (
-        <p>
-          Расстояние: {distance}, Стоимость: {price}, Продолжительность:
-          {time}
-        </p>
-      )}
-      {from && to && (
-        <p>
-          from: {from}, to: {to}
-        </p>
-      )} */}
     </div>
   );
 };

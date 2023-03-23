@@ -1,23 +1,16 @@
-import { Actions } from "../../constants";
+import { Actions } from "../../utils/constants";
 
-export const AddFormAction = (form) => (dispatch, getState) => {
-  //   const { Form } = getState();
+export const AddFormAction = (newForm) => (dispatch, getState) => {
+  const { Form } = getState();
 
-  //   const hasTodo = todos.find((item) => item.todo === todo);
-  if (form) {
+  Object.entries(newForm).forEach(([key, value]) => {
+    Form[key] = value;
+  });
+
+  if (newForm) {
     dispatch({
       type: Actions.ADD_FORM_DATA,
-      payload: form,
+      payload: { ...Form },
     });
   }
 };
-// export const DeleteAction = (todo) => (dispatch, getState) => {
-//   const {
-//     Todo: { todos },
-//   } = getState();
-
-//   dispatch({
-//     type: Actions.DELETE_TODO,
-//     payload: todos.filter((item) => item.id !== todo.id),
-//   });
-// };

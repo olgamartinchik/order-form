@@ -2,7 +2,7 @@ export const typesAuto = [
   { standard: "Стандарт, до 3 пассажиров" },
   { comfort: "Комфорт, до 3 пассажиров" },
   { minivan: "Минивен, до 8 пассажиров" },
-  { business: "Бизнес" },
+  { business: "Бизнес до 3 пассажиров" },
   { vip: "VIP" },
 ];
 
@@ -35,4 +35,11 @@ export const Actions = {
   //   UPDATE_DISTANCE: "UPDATE_DISTANCE",
   //   UPDATE_TYPE_AUTO: "UPDATE_TYPE_AUTO",
   ADD_FORM_DATA: "ADD_FORM_DATA",
+};
+export const initialState = {
+  from: null,
+  to: null,
+  price: null,
+  distance: null,
+  auto: "standard",
 };

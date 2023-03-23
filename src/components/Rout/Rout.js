@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import "./Rout.scss";
 import FormMap from "../FormMap/FormMap";
-import { typesAuto } from "../../constants";
+import Maps from "../FormMap/Maps";
+import { typesAuto } from "../../utils/constants";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { AddFormAction } from "../../redux/actions/FormActions";
+import { calculateDistance } from "../../utils/utils";
 
 const Rout = () => {
   const [typeAuto, setTypeAuto] = useState("standard");
 
-  const state = useSelector((state) => state.Form.form);
+  const state = useSelector((state) => state.Form);
+  const dispatch = useDispatch();
 
   const handleContinue = (e) => {
     e.preventDefault();
@@ -15,9 +20,18 @@ const Rout = () => {
   };
   const handleTypeAuto = (e) => {
     console.log("e.target", e.target.value);
-    console.log("state store", state);
+    console.log("state store", parseInt(state.distance));
 
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
+    if (parseInt(state.distance)) {
+      const price = calculateDistance(parseInt(state.distance), e.target.value);
+      dispatch(
+        AddFormAction({
+          price,
+          auto: e.target.value,
+        })
+      );
+    }
     console.log("typeAuto", typeAuto);
   };
 
@@ -39,8 +53,9 @@ const Rout = () => {
             </label>
           ))}
 
-          <span>* Микроавтобус/автобус рассчитываются индивидуально</span>
+          <span>* Микроавтобус до 20 мест рассчитываются индивидуально</span>
         </div>
+
         {state.price && state.distance && (
           <>
             <p>
@@ -58,7 +73,8 @@ const Rout = () => {
           </p>
         )}
       </div>
-      <FormMap typeAuto={typeAuto} />
+      {/* <FormMap typeAuto={typeAuto} /> */}
+      <Maps typeAuto={typeAuto} />
     </div>
   );
 };
