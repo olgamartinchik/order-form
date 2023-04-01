@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 import { calculateDistance } from "../../utils/utils";
+import UserData from "../UserData/UserData";
 
 const Route = () => {
   const [typeAuto, setTypeAuto] = useState("standard");
@@ -35,39 +36,42 @@ const Route = () => {
   };
 
   return (
-    <div className={"form-container"}>
-      <div className={"rout-container"}>
-        <h2>Тип транспорта</h2>
-        <div className='auto-type'>
-          {typesAuto.map((type, ind) => (
-            <label className='label' key={ind.toString()}>
-              <input
-                type={"radio"}
-                name='auto'
-                value={Object.keys(type)[0]}
-                defaultChecked={ind === 0 && "checked"}
-                onChange={handleTypeAuto}
-              />
-              {Object.values(type)[0]}
-            </label>
-          ))}
+    <div>
+      <div className={"form-container"}>
+        <div className={"rout-container"}>
+          <h2>Тип транспорта</h2>
+          <div className='auto-type'>
+            {typesAuto.map((type, ind) => (
+              <label className='label' key={ind.toString()}>
+                <input
+                  type={"radio"}
+                  name='auto'
+                  value={Object.keys(type)[0]}
+                  defaultChecked={ind === 0 && "checked"}
+                  onChange={handleTypeAuto}
+                />
+                {Object.values(type)[0]}
+              </label>
+            ))}
+          </div>
+
+          {state.price && state.distance && (
+            <>
+              <p>
+                Расстояние: {state.distance}, Стоимость: ~{state.price} б.р.,
+                Длительность: ~{state.time}
+              </p>
+              <p className='price_detail'>* Стоимость уточняйте у оператора</p>
+              <button className='button continue-btn' onClick={handleContinue}>
+                Далее
+              </button>
+            </>
+          )}
         </div>
 
-        {state.price && state.distance && (
-          <>
-            <p>
-              Расстояние: {state.distance}, Стоимость: ~{state.price} б.р.,
-              Длительность: ~{state.time}
-            </p>
-            <p className='price_detail'>* Стоимость уточняйте у оператора</p>
-            <button className='button continue-btn' onClick={handleContinue}>
-              Далее
-            </button>
-          </>
-        )}
+        <MapLayout typeAuto={typeAuto} />
       </div>
-
-      <MapLayout typeAuto={typeAuto} />
+      <UserData />
     </div>
   );
 };

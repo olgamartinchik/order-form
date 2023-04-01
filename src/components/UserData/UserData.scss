@@ -1,0 +1,21 @@
+.user-data_container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.notes, .user-data {
+    flex: 1;
+}
+.user-data{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+   
+    div{
+        display: flex;
+        flex-direction: column;
+        flex:1;
+        gap: 1rem;
+    }
+}
