@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 import { calculateDistance } from "../../utils/utils";
 
-const Rout = () => {
+const Route = () => {
   const [typeAuto, setTypeAuto] = useState("standard");
 
   const state = useSelector((state) => state.Form);
@@ -31,7 +31,7 @@ const Rout = () => {
         })
       );
     }
-    console.log("typeAuto", typeAuto);
+    // console.log("typeAuto", typeAuto);
   };
 
   return (
@@ -51,10 +51,6 @@ const Rout = () => {
               {Object.values(type)[0]}
             </label>
           ))}
-
-          <span className='auto_detail'>
-            * Микроавтобус до 20 мест рассчитываются индивидуально
-          </span>
         </div>
 
         {state.price && state.distance && (
@@ -63,16 +59,11 @@ const Rout = () => {
               Расстояние: {state.distance}, Стоимость: ~{state.price} б.р.,
               Длительность: ~{state.time}
             </p>
-            <p className='price_detail'>*Стоимость уточняйте у оператора</p>
+            <p className='price_detail'>* Стоимость уточняйте у оператора</p>
             <button className='button continue-btn' onClick={handleContinue}>
               Далее
             </button>
           </>
-        )}
-        {state.from && state.to && (
-          <p>
-            from: {state.from}, to: {state.to}
-          </p>
         )}
       </div>
 
@@ -80,4 +71,4 @@ const Rout = () => {
     </div>
   );
 };
-export default Rout;
+export default Route;

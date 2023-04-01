@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { YMaps, Map, RoutePanel, Placemark } from "@pbe/react-yandex-maps";
+import React, { useState } from "react";
+import { YMaps, Map, RoutePanel } from "@pbe/react-yandex-maps";
 import "./MapLayout.scss";
 import { API_KEY } from "../../utils/constants";
 import { useDispatch } from "react-redux";
@@ -21,6 +21,7 @@ const MapLayout = (props) => {
   const [ymapsRef, setYmapsRef] = useState(null);
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
+  // const [price, setPrice] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -65,21 +66,16 @@ const MapLayout = (props) => {
         Math.round(length.value / 1000),
         props.typeAuto
       );
-
-      const balloonContentLayout = ymapsRef.templateLayoutFactory.createClass(
-        "<span>Расстояние: " +
-          state.distance +
-          ".</span><br/>" +
-          '<span style="font-weight: bold; font-style: italic">Стоимость трансфера: ' +
-          "~" +
-          state.price +
-          " б.р.</span><br/>" +
-          '<span style="color: red; font-style: italic">*Стоимость уточняйте у оператора</span>'
+      // setPrice(newPrice);
+      const balloonContentLayout = createBalloonLayout(
+        ymapsRef,
+        length.text,
+        newPrice
       );
 
-      route.options.set("routeBalloonContentLayout", balloonContentLayout);
-      activeRoute.balloon.open();
+      openBallon(balloonContentLayout, route, activeRoute);
     }
+
     dispatch(
       AddFormAction({
         price: newPrice,
@@ -90,9 +86,26 @@ const MapLayout = (props) => {
       })
     );
   };
+  const createBalloonLayout = (ymaps, distance, newPrice) => {
+    return ymaps.templateLayoutFactory.createClass(
+      "<span>Расстояние: " +
+        distance +
+        ".</span><br/>" +
+        '<span style="font-weight: bold; font-style: italic">Стоимость трансфера: ' +
+        "~" +
+        newPrice +
+        " б.р.</span><br/>" +
+        '<span style="color: red; font-style: italic">*Стоимость уточняйте у оператора</span>'
+    );
+  };
+  const openBallon = (balloonContentLayout, route, activeRoute) => {
+    route.options.set("routeBalloonContentLayout", balloonContentLayout);
+    activeRoute.balloon.open();
+  };
 
   const loadSuggest = (ymaps) => {
     setYmapsRef(ymaps);
+
     const suggestView = new ymaps.SuggestView("from");
     suggestView.events.add("select", (e) => {
       const from = e.get("item");
@@ -113,14 +126,14 @@ const MapLayout = (props) => {
           <div className='inputs_container'>
             <input
               type='text'
-              className='form-control'
+              className='input form-control'
               id='from'
               name='from'
               placeholder='Откуда'
             />
             <input
               type='text'
-              className='to-control'
+              className='input to-control'
               id='to'
               name='to'
               placeholder='Куда'

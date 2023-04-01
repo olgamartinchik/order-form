@@ -1,5 +1,5 @@
 import React from "react";
-import Rout from "../Rout/Rout";
+import Route from "../Route/Route";
 import "./Form.scss";
 const Form = () => {
   const handleSubmit = (e) => {
@@ -10,7 +10,8 @@ const Form = () => {
   return (
     <div className='form-wrapper'>
       <form onSubmit={handleSubmit}>
-        <Rout />
+        <Route />
+
         <input type='submit' className='button' />
       </form>
     </div>
