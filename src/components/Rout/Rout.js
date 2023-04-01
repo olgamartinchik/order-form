@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Rout.scss";
-import FormMap from "../FormMap/FormMap";
-import Maps from "../FormMap/Maps";
+import MapLayout from "../FormMap/MapLayout";
 import { typesAuto } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -53,15 +52,18 @@ const Rout = () => {
             </label>
           ))}
 
-          <span>* Микроавтобус до 20 мест рассчитываются индивидуально</span>
+          <span className='auto_detail'>
+            * Микроавтобус до 20 мест рассчитываются индивидуально
+          </span>
         </div>
 
         {state.price && state.distance && (
           <>
             <p>
-              Расстояние: {state.distance}, Стоимость: {state.price},
+              Расстояние: {state.distance}, Стоимость: ~{state.price} б.р.,
+              Длительность: ~{state.time}
             </p>
-
+            <p className='price_detail'>*Стоимость уточняйте у оператора</p>
             <button className='button continue-btn' onClick={handleContinue}>
               Далее
             </button>
@@ -73,8 +75,8 @@ const Rout = () => {
           </p>
         )}
       </div>
-      {/* <FormMap typeAuto={typeAuto} /> */}
-      <Maps typeAuto={typeAuto} />
+
+      <MapLayout typeAuto={typeAuto} />
     </div>
   );
 };

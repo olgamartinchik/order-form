@@ -42,4 +42,5 @@ export const initialState = {
   price: null,
   distance: null,
   auto: "standard",
+  template: null,
 };
