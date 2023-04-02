@@ -74,8 +74,9 @@ const MapLayout = (props) => {
       );
 
       openBallon(balloonContentLayout, route, activeRoute);
+      console.log("length active route", length);
     }
-
+    console.log("length", length);
     dispatch(
       AddFormAction({
         price: newPrice,

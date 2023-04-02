@@ -14,12 +14,11 @@ const UserData = (e) => {
   };
   return (
     <div className='details_container'>
-      <h2>Контактная информация</h2>
       <div className='user-data_container'>
+        <h2>Контактная информация</h2>
         <div className='user-data'>
           <div>
             <label>Имя</label>
-
             <input
               className='input'
               type={"text"}
@@ -37,7 +36,6 @@ const UserData = (e) => {
           </div>
           <div>
             <label>Телефон</label>
-
             <input
               className='input'
               type='text'
@@ -56,14 +54,14 @@ const UserData = (e) => {
         <div className='notes-container'>
           <label>Детали поездки</label>
           <textarea
-            className='notes'
+            className='input notes'
             placeholder='Дата прилета, номер рейса'
           ></textarea>
         </div>
       </div>
-      <div>
+      <div className='payment-type-container'>
         <h2>Вид оплаты</h2>
-        <div className='payment-container'>
+        <div className='type-container'>
           {typeOfPayment.map((type, ind) => (
             <label className='label' key={ind.toString()}>
               <input

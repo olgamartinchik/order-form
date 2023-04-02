@@ -30,6 +30,7 @@ const Form = () => {
         {state.isUserData && (
           <div>
             <UserData />
+            {state.price && <h3>Стоимость трансфера: ~{state.price} б.р.</h3>}
             <div className='button-container'>
               <button className='button continue-btn' onClick={handleBack}>
                 Назад
