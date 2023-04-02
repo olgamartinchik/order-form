@@ -4,7 +4,7 @@ import "./MapLayout.scss";
 import { API_KEY } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { calculateDistance } from "../../utils/utils";
 
 const MapLayout = (props) => {
@@ -52,7 +52,7 @@ const MapLayout = (props) => {
     const activeRoute = route.getActiveRoute();
     let length;
     let duration;
-    let newBoundedBy;
+    // let newBoundedBy;
     let newPrice;
 
     if (activeRoute) {
