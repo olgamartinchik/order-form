@@ -24,9 +24,9 @@ export const RATIO_PER_KM = {
   minibus: 2.3,
 };
 export const typeOfPayment = [
-  { cash: "Наличные" },
-  { card: "Карта" },
-  { online: "Онлайн" },
+  { cash: "Оплата наличными" },
+  { card: "Щплата банковской картой" },
+  { online: "Онлайн оплата" },
   { cashless: "Безналичный расчет" },
 ];
 export const API_KEY2 = "dd860581-f55b-46fd-b520-49cf11337c2e";
