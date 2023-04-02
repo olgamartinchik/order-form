@@ -3,7 +3,7 @@ import { typeOfPayment } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 
-const UserData = (e) => {
+const UserData = () => {
   const dispatch = useDispatch();
   const handleTypePayment = (e) => {
     dispatch(
@@ -80,3 +80,5 @@ const UserData = (e) => {
   );
 };
 export default UserData;
+// https://taxi-aeroport-minsk2.by/spasibo/
+// https://taxi-aeroport-minsk2.by/product/oplata-za-poezdku/

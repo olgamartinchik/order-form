@@ -42,6 +42,7 @@ const Route = () => {
   return (
     <div className={state.isUserData ? "hidden" : ""}>
       <div className={"form-container "}>
+        <MapLayout typeAuto={typeAuto} />
         <div className={"rout-container"}>
           <h2>Тип транспорта</h2>
           <div className='auto-type'>
@@ -72,8 +73,6 @@ const Route = () => {
             </>
           )}
         </div>
-
-        <MapLayout typeAuto={typeAuto} />
       </div>
     </div>
   );
