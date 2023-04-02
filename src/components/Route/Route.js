@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 import { calculateDistance } from "../../utils/utils";
-import UserData from "../UserData/UserData";
 
 const Route = () => {
   const [typeAuto, setTypeAuto] = useState("standard");
@@ -16,6 +15,11 @@ const Route = () => {
 
   const handleContinue = (e) => {
     e.preventDefault();
+    dispatch(
+      AddFormAction({
+        isUserData: true,
+      })
+    );
     console.log("state");
   };
   const handleTypeAuto = (e) => {
@@ -36,8 +40,8 @@ const Route = () => {
   };
 
   return (
-    <div>
-      <div className={"form-container"}>
+    <div className={state.isUserData ? "hidden" : ""}>
+      <div className={"form-container "}>
         <div className={"rout-container"}>
           <h2>Тип транспорта</h2>
           <div className='auto-type'>
@@ -71,7 +75,6 @@ const Route = () => {
 
         <MapLayout typeAuto={typeAuto} />
       </div>
-      <UserData />
     </div>
   );
 };

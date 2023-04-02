@@ -20,16 +20,16 @@ flex-direction: column;
 width: 100%;
 gap: .5rem;
 }
-.label{
-    display: flex;
-    gap: .2rem;
-    cursor: pointer;
-}
+
 .auto_detail{
     text-align: start;
 }
 .price_detail{
     color: red
+}
+.hidden{
+  height: 0;
+    visibility: hidden;
 }
 @media(max-width: 900px){
     .form-container{

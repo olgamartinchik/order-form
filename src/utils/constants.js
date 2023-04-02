@@ -23,10 +23,17 @@ export const RATIO_PER_KM = {
   vip: 3,
   minibus: 2.3,
 };
+export const typeOfPayment = [
+  { cash: "Наличные" },
+  { card: "Карта" },
+  { online: "Онлайн" },
+  { cashless: "Безналичный расчет" },
+];
 export const API_KEY2 = "dd860581-f55b-46fd-b520-49cf11337c2e";
 export const API_KEY = "1c324abd-4386-42ae-95df-be1b518bad77";
 
 export const Actions = {
   ADD_FORM_DATA: "ADD_FORM_DATA",
+  ADD_IS_USER_DATA_PART: "ADD_IS_USER_DATA_PART",
 };
 export const initialState = {};
