@@ -25,7 +25,7 @@ const MapLayout = (props) => {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.Form);
+  // const state = useSelector((state) => state.Form);
 
   const createRoutPanel = async (ref) => {
     try {
@@ -60,7 +60,7 @@ const MapLayout = (props) => {
 
       duration = route.getActiveRoute().properties.get("duration").text;
 
-      newBoundedBy = route.getActiveRoute().properties.get("boundedBy");
+      // newBoundedBy = route.getActiveRoute().properties.get("boundedBy");
 
       newPrice = calculateDistance(
         Math.round(length.value / 1000),
