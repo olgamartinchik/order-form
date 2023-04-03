@@ -4,7 +4,7 @@ import "./MapLayout.scss";
 import { API_KEY } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { calculateDistance } from "../../utils/utils";
 
 const MapLayout = (props) => {
@@ -25,7 +25,7 @@ const MapLayout = (props) => {
 
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state.Form);
+  // const state = useSelector((state) => state.Form);
 
   const createRoutPanel = async (ref) => {
     try {

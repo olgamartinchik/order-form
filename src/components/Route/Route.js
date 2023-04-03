@@ -40,7 +40,6 @@ const Route = (props) => {
 
   return (
     <div className={state.isUserData ? "hidden" : ""}>
-      {props.register}
       <div className={"form-container "}>
         <MapLayout
           typeAuto={typeAuto}
