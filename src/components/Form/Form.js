@@ -5,13 +5,20 @@ import "./Form.scss";
 import { useSelector } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+
 const Form = () => {
   const state = useSelector((state) => state.Form);
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submit");
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  // };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: "onChange" });
+
   const handleBack = (e) => {
     e.preventDefault();
     console.log("back");
@@ -24,18 +31,21 @@ const Form = () => {
 
   return (
     <div className='form-wrapper'>
-      <form onSubmit={handleSubmit}>
-        <Route />
-
+      <form onSubmit={handleSubmit((data) => console.log(data))} method='POST'>
+        <Route register={register} errors={errors} />
         {state.isUserData && (
           <div>
-            <UserData />
+            <UserData register={register} errors={errors} />
             {state.price && <h3>Стоимость трансфера: ~{state.price}б.р.</h3>}
             <div className='button-container'>
-              <button className='button continue-btn' onClick={handleBack}>
+              <button
+                type='button'
+                className='button continue-btn'
+                onClick={handleBack}
+              >
                 Назад
               </button>
-              <input type='submit' className='button' disabled />
+              <input type='submit' className='button' />
             </div>
           </div>
         )}

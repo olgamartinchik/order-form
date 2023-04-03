@@ -25,7 +25,7 @@ export const RATIO_PER_KM = {
 };
 export const typeOfPayment = [
   { cash: "Оплата наличными" },
-  { card: "Щплата банковской картой" },
+  { card: "Оплата банковской картой" },
   { online: "Онлайн оплата" },
   { cashless: "Безналичный расчет" },
 ];

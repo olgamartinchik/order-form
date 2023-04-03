@@ -4,7 +4,7 @@ import "./MapLayout.scss";
 import { API_KEY } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { calculateDistance } from "../../utils/utils";
 
 const MapLayout = (props) => {
@@ -25,7 +25,7 @@ const MapLayout = (props) => {
 
   const dispatch = useDispatch();
 
-  // const state = useSelector((state) => state.Form);
+  const state = useSelector((state) => state.Form);
 
   const createRoutPanel = async (ref) => {
     try {
@@ -70,13 +70,13 @@ const MapLayout = (props) => {
       const balloonContentLayout = createBalloonLayout(
         ymapsRef,
         length.text,
-        newPrice
+        newPrice,
+        duration
       );
 
       openBallon(balloonContentLayout, route, activeRoute);
-      console.log("length active route", length);
     }
-    console.log("length", length);
+
     dispatch(
       AddFormAction({
         price: newPrice,
@@ -87,10 +87,14 @@ const MapLayout = (props) => {
       })
     );
   };
-  const createBalloonLayout = (ymaps, distance, newPrice) => {
+  const createBalloonLayout = (ymaps, distance, newPrice, duration) => {
     return ymaps.templateLayoutFactory.createClass(
       "<span>Расстояние: " +
         distance +
+        ".</span><br/>" +
+        "<span>Длительность: " +
+        "~" +
+        duration +
         ".</span><br/>" +
         '<span style="font-weight: bold; font-style: italic">Стоимость трансфера: ' +
         "~" +
@@ -131,13 +135,16 @@ const MapLayout = (props) => {
               id='from'
               name='from'
               placeholder='Откуда'
+              {...props.register("from", { required: true })}
             />
+
             <input
               type='text'
               className='input to-control'
               id='to'
               name='to'
               placeholder='Куда'
+              {...props.register("to", { required: true })}
             />
           </div>
 

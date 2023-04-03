@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
 import { calculateDistance } from "../../utils/utils";
 
-const Route = () => {
+const Route = (props) => {
   const [typeAuto, setTypeAuto] = useState("standard");
 
   const state = useSelector((state) => state.Form);
@@ -15,6 +15,8 @@ const Route = () => {
 
   const handleContinue = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    console.log("errors", props.errors);
     dispatch(
       AddFormAction({
         isUserData: true,
@@ -23,9 +25,6 @@ const Route = () => {
     console.log("state");
   };
   const handleTypeAuto = (e) => {
-    console.log("e.target", e.target.value);
-    console.log("state store", parseInt(state.distance));
-
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
     if (parseInt(state.distance)) {
       const price = calculateDistance(parseInt(state.distance), e.target.value);
@@ -41,8 +40,13 @@ const Route = () => {
 
   return (
     <div className={state.isUserData ? "hidden" : ""}>
+      {props.register}
       <div className={"form-container "}>
-        <MapLayout typeAuto={typeAuto} />
+        <MapLayout
+          typeAuto={typeAuto}
+          register={props.register}
+          errors={props.errors}
+        />
         <div className={"rout-container"}>
           <h2>Тип транспорта</h2>
           <div className='auto-type'>
@@ -51,6 +55,7 @@ const Route = () => {
                 <input
                   type={"radio"}
                   name='auto'
+                  {...props.register("auto")}
                   value={Object.keys(type)[0]}
                   defaultChecked={ind === 0 && "checked"}
                   onChange={handleTypeAuto}
@@ -66,8 +71,20 @@ const Route = () => {
                 Расстояние: {state.distance}, Стоимость: ~{state.price} б.р.,
                 Длительность: ~{state.time}
               </p>
-              <p className='price_detail'>* Стоимость уточняйте у оператора</p>
-              <button className='button continue-btn' onClick={handleContinue}>
+              <p className='price_detail'>
+                {props.errors.from || props.errors.to
+                  ? "* Уточните маршрут"
+                  : "* Стоимость уточняйте у оператора"}
+              </p>
+              {/* {(props.errors.from || props.errors.to) && (
+                <span className='error'>Уточните маршрут</span>
+              )} */}
+              <button
+                type='button'
+                className='button continue-btn'
+                onClick={handleContinue}
+                disabled={props.errors.from || props.errors.to}
+              >
                 Далее
               </button>
             </>
