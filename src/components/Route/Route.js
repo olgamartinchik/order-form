@@ -28,6 +28,8 @@ const Route = (props) => {
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
     if (parseInt(state.distance)) {
       const price = calculateDistance(parseInt(state.distance), e.target.value);
+      const balloon = document.querySelector(".ballon-price");
+      balloon.innerText = price;
       dispatch(
         AddFormAction({
           price,

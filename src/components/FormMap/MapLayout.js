@@ -96,11 +96,13 @@ const MapLayout = (props) => {
         "~" +
         duration +
         ".</span><br/>" +
-        '<span style="font-weight: bold; font-style: italic">Стоимость трансфера: ' +
+        '<span  style="font-weight: bold; font-style: italic">Стоимость трансфера: ' +
         "~" +
+        '<span class = "ballon-price">' +
         newPrice +
+        "</span>" +
         " б.р.</span><br/>" +
-        '<span style="color: red; font-style: italic">*Стоимость уточняйте у оператора</span>'
+        '<span  style="color: red; font-style: italic">*Стоимость уточняйте у оператора</span>'
     );
   };
   const openBallon = (balloonContentLayout, route, activeRoute) => {
