@@ -144,9 +144,9 @@ const MapLayout = (props) => {
               type='text'
               className='input to-control'
               id='to'
-              name='to'
+              name='transfer_to'
               placeholder='Куда'
-              {...props.register("to", { required: true })}
+              {...props.register("transfer_to", { required: true })}
             />
           </div>
 

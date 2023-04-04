@@ -55,11 +55,11 @@ const Route = (props) => {
               <label className='label' key={ind.toString()}>
                 <input
                   type={"radio"}
-                  name='auto'
-                  {...props.register("auto")}
+                  name={"auto"}
                   value={Object.keys(type)[0]}
                   defaultChecked={ind === 0 && "checked"}
                   onChange={handleTypeAuto}
+                  {...props.register("auto")}
                 />
                 {Object.values(type)[0]}
               </label>

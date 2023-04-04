@@ -30,6 +30,7 @@ const UserData = (props) => {
                 // pattern: /^[A-Za-z]+$/i,
               })}
             />
+
             <span className='error'>
               {props.errors.name ? "Введите имя" : ""}
             </span>
@@ -61,6 +62,7 @@ const UserData = (props) => {
                 pattern: /\S/,
               })}
             />
+
             <span className='error'>
               {props.errors.phone ? "Введите телефона" : ""}
             </span>
@@ -75,6 +77,7 @@ const UserData = (props) => {
                 pattern: /\S/,
               })}
             />
+
             <span className='error'>
               {props.errors.date ? "Введите дату поездки" : ""}
             </span>
@@ -88,6 +91,7 @@ const UserData = (props) => {
             name='notes'
             {...props.register("notes", { min: 4, max: 500 })}
           ></textarea>
+
           <span className='error'>
             {props.errors.notes ? "Введите дату поездки" : ""}
           </span>
