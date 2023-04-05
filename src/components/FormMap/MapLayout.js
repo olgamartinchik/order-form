@@ -4,7 +4,7 @@ import "./MapLayout.scss";
 import { API_KEY } from "../../utils/constants";
 import { useDispatch } from "react-redux";
 import { AddFormAction } from "../../redux/actions/FormActions";
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { calculateDistance } from "../../utils/utils";
 
 const MapLayout = (props) => {
@@ -19,13 +19,13 @@ const MapLayout = (props) => {
   };
 
   const [ymapsRef, setYmapsRef] = useState(null);
-  const [from, setFrom] = useState(null);
-  const [to, setTo] = useState(null);
+  // const [from, setFrom] = useState(null);
+  // const [to, setTo] = useState(null);
   // const [price, setPrice] = useState(null);
 
   const dispatch = useDispatch();
 
-  // const state = useSelector((state) => state.Form);
+  const state = useSelector((state) => state.Form);
 
   const createRoutPanel = async (ref) => {
     try {
@@ -35,8 +35,8 @@ const MapLayout = (props) => {
           allowSwitch: false,
         });
         ref.routePanel.state.set({
-          from,
-          to,
+          from: state.from,
+          to: state.to,
         });
 
         const route = await ref.routePanel.getRouteAsync();
@@ -82,8 +82,8 @@ const MapLayout = (props) => {
         price: newPrice,
         distance: length && length.text,
         time: duration,
-        from,
-        to,
+        // from,
+        // to,
       })
     );
   };
@@ -116,12 +116,22 @@ const MapLayout = (props) => {
     const suggestView = new ymaps.SuggestView("from");
     suggestView.events.add("select", (e) => {
       const from = e.get("item");
-      setFrom(from.displayName);
+      // setFrom(from.displayName);
+      dispatch(
+        AddFormAction({
+          from: from.displayName,
+        })
+      );
     });
     const suggestView2 = new ymaps.SuggestView("to");
     suggestView2.events.add("select", (e) => {
       const to = e.get("item");
-      setTo(to.displayName);
+      // setTo(to.displayName);
+      dispatch(
+        AddFormAction({
+          to: to.displayName,
+        })
+      );
     });
   };
 
@@ -133,7 +143,7 @@ const MapLayout = (props) => {
           <div className='inputs_container'>
             <input
               type='text'
-              className='input form-control'
+              className='input from-control map-input'
               id='from'
               name='from'
               placeholder='Откуда'
@@ -141,7 +151,7 @@ const MapLayout = (props) => {
             />
             <input
               type='text'
-              className='input to-control'
+              className='input to-control map-input'
               id='to'
               name='to'
               placeholder='Куда'

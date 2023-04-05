@@ -27,6 +27,7 @@ const Route = (props) => {
   };
   const handleTypeAuto = (e) => {
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
+
     if (parseInt(state.distance)) {
       const price = calculateDistance(parseInt(state.distance), e.target.value);
 
@@ -64,6 +65,7 @@ const Route = (props) => {
                 {...props.register("auto")}
                 value={Object.keys(type)[0]}
                 defaultChecked={ind === 0 && "checked"}
+                // checked={!!state.auto || (ind === 0 && "checked")}
                 onChange={handleTypeAuto}
               />
               <label className='label radio-label' htmlFor={`auto-${ind}`}>

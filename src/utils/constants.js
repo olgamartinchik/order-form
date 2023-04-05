@@ -36,6 +36,9 @@ export const YOUR_TEMPLATE_ID = "template_m320dst";
 export const YOUR_PUBLIC_KEY = "oHr8NKp2rKqUfWhUt";
 export const Actions = {
   ADD_FORM_DATA: "ADD_FORM_DATA",
-  ADD_IS_USER_DATA_PART: "ADD_IS_USER_DATA_PART",
+  DELETE_FORM_DATA: "DELETE_FORM_DATA",
 };
 export const initialState = {};
+
+export const errorMessage =
+  "Что-то пошло не так, повторите попытку позже или свяжитесь с оператором по указанному номеру.";
