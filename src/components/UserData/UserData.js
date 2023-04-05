@@ -97,11 +97,11 @@ const UserData = (props) => {
             className='input notes'
             placeholder='Количество багажа; Hомер рейса / поезда, вагона;  Детское кресло'
             name='notes'
-            {...props.register("notes", { min: 4, max: 500 })}
+            {...props.register("notes", { min: 0, max: 500 })}
           ></textarea>
 
           <span className='error'>
-            {props.errors.notes ? "Введите дату поездки" : ""}
+            {props.errors.notes ? "Введите до 1000 символов" : ""}
           </span>
         </div>
       </div>
