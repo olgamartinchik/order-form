@@ -46,7 +46,7 @@ const Route = (props) => {
   };
 
   return (
-    <div className={"form-container " + state.isUserData ? "hidden" : ""}>
+    <div className={"form-container " + `${state.isUserData} ? "hidden" : ""`}>
       <MapLayout
         typeAuto={typeAuto}
         register={props.register}
