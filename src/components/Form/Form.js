@@ -75,7 +75,10 @@ const Form = () => {
           <div>
             <UserData register={register} errors={errors} />
             {formState.price && (
-              <h3>Стоимость трансфера: ~{formState.price}б.р.</h3>
+              <h3>
+                Стоимость трансфера:{" "}
+                <span className='nowrap'>~{formState.price} б.р.</span>{" "}
+              </h3>
             )}
             <div className='button-container'>
               <button

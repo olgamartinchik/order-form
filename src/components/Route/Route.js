@@ -46,7 +46,7 @@ const Route = (props) => {
   };
 
   return (
-    <div className={`"form-container" ${state.isUserData ? "hidden" : ""}`}>
+    <div className={`form-container ${state.isUserData ? "hidden" : ""}`}>
       <MapLayout
         typeAuto={typeAuto}
         register={props.register}
@@ -72,7 +72,10 @@ const Route = (props) => {
 
         {state.price && state.distance && (
           <div className='continue_container'>
-            <h3>Стоимость трансфера: ~{state.price}б.р.</h3>
+            <h3>
+              Стоимость трансфера:{" "}
+              <span className='nowrap'>~{state.price} б.р.</span>{" "}
+            </h3>
 
             <p className='subtitle'>
               {props.errors.from || props.errors.to
