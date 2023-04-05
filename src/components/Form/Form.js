@@ -75,7 +75,7 @@ const Form = () => {
           <div>
             <UserData register={register} errors={errors} />
             {formState.price && (
-              <h3>
+              <h3 className='text-center'>
                 Стоимость трансфера:{" "}
                 <span className='nowrap'>~{formState.price} б.р.</span>{" "}
               </h3>

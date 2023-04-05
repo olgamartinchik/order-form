@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     gap: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     z-index: 2;
 }
 .user-data_container{
@@ -32,11 +32,11 @@
     align-items: flex-start;
     // gap: 1rem;
     width: 100%;
-    margin-top: 1rem;
+    // margin-top: 1rem;
  
 }
 .notes{
-    min-height: 4rem;
+    min-height: 6rem;
 }
 .payment-type-container{
     flex: 1;

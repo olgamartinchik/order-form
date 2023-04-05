@@ -72,7 +72,7 @@ const Route = (props) => {
 
         {state.price && state.distance && (
           <div className='continue_container'>
-            <h3>
+            <h3 className='text-center'>
               Стоимость трансфера:{" "}
               <span className='nowrap'>~{state.price} б.р.</span>{" "}
             </h3>
