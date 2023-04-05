@@ -20,64 +20,71 @@ const UserData = (props) => {
         <div className='user-data'>
           <div>
             <label className='label'>Имя</label>
-            <input
-              className='input'
-              type={"text"}
-              placeholder='Иван'
-              name='name'
-              {...props.register("name", {
-                required: true,
-                // pattern: /^[A-Za-z]+$/i,
-              })}
-            />
+            <div className='name-input'>
+              <input
+                className='input'
+                type={"text"}
+                placeholder='Иван'
+                name='name'
+                {...props.register("name", {
+                  required: true,
+                  // pattern: /^[A-Za-z]+$/i,
+                })}
+              />
+            </div>
 
             <span className='error'>
               {props.errors.name ? "Введите имя" : ""}
             </span>
             <label className='label'>E-mail</label>
-            <input
-              className='input'
-              type={"email"}
-              placeholder='ivanov@gmail.com'
-              name='email'
-              {...props.register("email", {
-                required: "Введите email",
-                pattern:
-                  /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+.([A-Za-z]{2,4})$/,
-              })}
-            />
+            <div className='email-input'>
+              <input
+                className='input'
+                type={"email"}
+                placeholder='ivanov@gmail.com'
+                name='email'
+                {...props.register("email", {
+                  required: "Введите email",
+                  pattern:
+                    /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+.([A-Za-z]{2,4})$/,
+                })}
+              />
+            </div>
             <span className='error'>
               {props.errors.email ? "Введите email" : ""}
             </span>
           </div>
           <div>
             <label className='label'>Телефон</label>
-            <input
-              className='input'
-              type='text'
-              placeholder='+375(29)0000000'
-              name='phone'
-              {...props.register("phone", {
-                required: "Введите телефона",
-                pattern: /\S/,
-              })}
-            />
-
+            <div className='phone-input'>
+              <input
+                className='input'
+                type='text'
+                placeholder='+375(29)0000000'
+                name='phone'
+                {...props.register("phone", {
+                  required: "Введите телефона",
+                  pattern: /\S/,
+                })}
+              />
+            </div>
             <span className='error'>
               {props.errors.phone ? "Введите телефона" : ""}
             </span>
 
             <label className='label'>Дата и время поездки</label>
-            <input
-              className='input'
-              type={"text"}
-              placeholder='25.12 в 14:00'
-              name='date'
-              {...props.register("date", {
-                required: "Введите дату поездки",
-                pattern: /\S/,
-              })}
-            />
+            <div className='date-input'>
+              <input
+                className='input'
+                type={"text"}
+                placeholder='25.12 в 14:00'
+                name='date'
+                {...props.register("date", {
+                  required: "Введите дату поездки",
+                  pattern: /\S/,
+                })}
+              />
+            </div>
 
             <span className='error'>
               {props.errors.date ? "Введите дату поездки" : ""}
