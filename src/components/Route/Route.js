@@ -56,8 +56,9 @@ const Route = (props) => {
         <h2 className='title'>Тип транспорта</h2>
         <div className='auto-type'>
           {typesAuto.map((type, ind) => (
-            <label className='label' key={ind.toString()}>
+            <div className='form_radio' key={ind.toString()}>
               <input
+                id={`auto-${ind}`}
                 type={"radio"}
                 name='auto'
                 {...props.register("auto")}
@@ -65,17 +66,19 @@ const Route = (props) => {
                 defaultChecked={ind === 0 && "checked"}
                 onChange={handleTypeAuto}
               />
-              {Object.values(type)[0]}
-            </label>
+              <label className='label radio-label' htmlFor={`auto-${ind}`}>
+                {Object.values(type)[0]}
+              </label>
+            </div>
           ))}
         </div>
 
         {state.price && state.distance && (
           <div className='continue_container'>
-            <h3 className='text-center'>
+            <p className='text-center fw-bold'>
               Стоимость трансфера:{" "}
               <span className='nowrap'>~{state.price} б.р.</span>{" "}
-            </h3>
+            </p>
 
             <p className='subtitle'>
               {props.errors.from || props.errors.to

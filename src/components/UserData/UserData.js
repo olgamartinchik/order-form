@@ -66,6 +66,7 @@ const UserData = (props) => {
             <span className='error'>
               {props.errors.phone ? "Введите телефона" : ""}
             </span>
+
             <label className='label'>Дата и время поездки</label>
             <input
               className='input'
@@ -101,17 +102,20 @@ const UserData = (props) => {
         <h2 className='title'>Вид оплаты</h2>
         <div className='type-container'>
           {typeOfPayment.map((type, ind) => (
-            <label className='label' key={ind.toString()}>
+            <div className='form_radio' key={ind.toString()}>
               <input
+                id={`payment-${ind}`}
                 type={"radio"}
                 name='payment'
                 value={Object.keys(type)[0]}
                 defaultChecked={ind === 0 && "checked"}
-                onChange={handleTypePayment}
                 {...props.register("payment")}
+                onChange={handleTypePayment}
               />
-              {Object.values(type)[0]}
-            </label>
+              <label htmlFor={`payment-${ind}`} className='label radio-label'>
+                {Object.values(type)[0]}
+              </label>
+            </div>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 .details_container{
     position: relative;
     display: flex;
-    gap: 2rem;
+    gap: 5%;
     margin-bottom: 1rem;
     z-index: 2;
 }
@@ -46,7 +46,7 @@
 .type-container{
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    // gap: .5rem;
    
 }
 input[name="name"]{
@@ -78,7 +78,7 @@ input[name="date"]{
     background-repeat: no-repeat;
     background-position: 99%;
 }
-@media(max-width: 900px){
+@media(max-width: 940px){
     .details_container{
        
         flex-direction: column;
