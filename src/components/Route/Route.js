@@ -22,14 +22,19 @@ const Route = (props) => {
         isUserData: true,
       })
     );
+
     console.log("state");
   };
   const handleTypeAuto = (e) => {
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
     if (parseInt(state.distance)) {
       const price = calculateDistance(parseInt(state.distance), e.target.value);
+
       const balloon = document.querySelector(".ballon-price");
-      balloon.innerText = price;
+      if (balloon) {
+        balloon.innerText = price;
+      }
+
       dispatch(
         AddFormAction({
           price,
@@ -41,56 +46,55 @@ const Route = (props) => {
   };
 
   return (
-    <div className={state.isUserData ? "hidden" : ""}>
-      <div className={"form-container "}>
-        <MapLayout
-          typeAuto={typeAuto}
-          register={props.register}
-          errors={props.errors}
-        />
-        <div className={"rout-container"}>
-          <h2>Тип транспорта</h2>
-          <div className='auto-type'>
-            {typesAuto.map((type, ind) => (
-              <label className='label' key={ind.toString()}>
-                <input
-                  type={"radio"}
-                  name={"auto"}
-                  value={Object.keys(type)[0]}
-                  defaultChecked={ind === 0 && "checked"}
-                  onChange={handleTypeAuto}
-                  {...props.register("auto")}
-                />
-                {Object.values(type)[0]}
-              </label>
-            ))}
-          </div>
+    <div className={"form-container " + `${state.isUserData ? "hidden" : ""}`}>
+      <MapLayout
+        typeAuto={typeAuto}
+        register={props.register}
+        errors={props.errors}
+      />
+      <div className={"rout-container"}>
+        <h2 className='title'>Тип транспорта</h2>
+        <div className='auto-type'>
+          {typesAuto.map((type, ind) => (
+            <label className='label' key={ind.toString()}>
+              <input
+                type={"radio"}
+                name='auto'
+                {...props.register("auto")}
+                value={Object.keys(type)[0]}
+                defaultChecked={ind === 0 && "checked"}
+                onChange={handleTypeAuto}
+              />
+              {Object.values(type)[0]}
+            </label>
+          ))}
+        </div>
 
-          {state.price && state.distance && (
-            <>
-              <p>
-                Расстояние: {state.distance}, Стоимость: ~{state.price} б.р.,
-                Длительность: ~{state.time}
-              </p>
-              <p className='price_detail'>
-                {props.errors.from || props.errors.to
-                  ? "* Уточните маршрут"
-                  : "* Стоимость уточняйте у оператора"}
-              </p>
-              {/* {(props.errors.from || props.errors.to) && (
+        {state.price && state.distance && (
+          <div className='continue_container'>
+            <h3>Стоимость трансфера: ~{state.price}б.р.</h3>
+
+            <p className='subtitle'>
+              {props.errors.from || props.errors.to
+                ? "* Уточните маршрут"
+                : "* Стоимость уточняйте у оператора"}
+            </p>
+            <p className='subtitle price_detail'>
+              * Стоимость международного трансфера просчитывается индивидуально
+            </p>
+            {/* {(props.errors.from || props.errors.to) && (
                 <span className='error'>Уточните маршрут</span>
               )} */}
-              <button
-                type='button'
-                className='button continue-btn'
-                onClick={handleContinue}
-                disabled={props.errors.from || props.errors.to}
-              >
-                Далее
-              </button>
-            </>
-          )}
-        </div>
+            <button
+              type='button'
+              className='button continue-btn'
+              onClick={handleContinue}
+              disabled={props.errors.from || props.errors.to}
+            >
+              Далее
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

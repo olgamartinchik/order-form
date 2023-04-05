@@ -25,13 +25,15 @@ export const RATIO_PER_KM = {
 };
 export const typeOfPayment = [
   { cash: "Оплата наличными" },
-  { card: "Оплата банковской картой" },
-  { online: "Онлайн оплата" },
-  { cashless: "Безналичный расчет" },
+  { card: "Оплата банковской картой в авто (+20% от суммы оплаты)" },
+  { online: "Онлайн оплата (+20% от суммы оплаты)" },
+  { cashless: "Безналичный расчет (+20% от суммы оплаты)" },
 ];
 export const API_KEY2 = "dd860581-f55b-46fd-b520-49cf11337c2e";
 export const API_KEY = "1c324abd-4386-42ae-95df-be1b518bad77";
-
+export const YOUR_SERVICE_ID = "service_n9g4nii";
+export const YOUR_TEMPLATE_ID = "template_m320dst";
+export const YOUR_PUBLIC_KEY = "oHr8NKp2rKqUfWhUt";
 export const Actions = {
   ADD_FORM_DATA: "ADD_FORM_DATA",
   ADD_IS_USER_DATA_PART: "ADD_IS_USER_DATA_PART",

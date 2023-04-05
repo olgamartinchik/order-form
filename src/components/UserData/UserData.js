@@ -19,7 +19,7 @@ const UserData = (props) => {
         <h2>Контактная информация</h2>
         <div className='user-data'>
           <div>
-            <label>Имя</label>
+            <label className='label'>Имя</label>
             <input
               className='input'
               type={"text"}
@@ -34,7 +34,7 @@ const UserData = (props) => {
             <span className='error'>
               {props.errors.name ? "Введите имя" : ""}
             </span>
-            <label>E-mail</label>
+            <label className='label'>E-mail</label>
             <input
               className='input'
               type={"email"}
@@ -51,7 +51,7 @@ const UserData = (props) => {
             </span>
           </div>
           <div>
-            <label>Телефон</label>
+            <label className='label'>Телефон</label>
             <input
               className='input'
               type='text'
@@ -66,7 +66,7 @@ const UserData = (props) => {
             <span className='error'>
               {props.errors.phone ? "Введите телефона" : ""}
             </span>
-            <label>Дата и время поездки</label>
+            <label className='label'>Дата и время поездки</label>
             <input
               className='input'
               type={"text"}
@@ -84,10 +84,10 @@ const UserData = (props) => {
           </div>
         </div>
         <div className='notes-container'>
-          <label>Детали поездки</label>
+          <label className='label'>Детали поездки</label>
           <textarea
             className='input notes'
-            placeholder='Дата прилета, номер рейса'
+            placeholder='Количество багажа; Hомер рейса / поезда, вагона;  Детское кресло'
             name='notes'
             {...props.register("notes", { min: 4, max: 500 })}
           ></textarea>
@@ -98,7 +98,7 @@ const UserData = (props) => {
         </div>
       </div>
       <div className='payment-type-container'>
-        <h2>Вид оплаты</h2>
+        <h2 className='title'>Вид оплаты</h2>
         <div className='type-container'>
           {typeOfPayment.map((type, ind) => (
             <label className='label' key={ind.toString()}>
@@ -119,5 +119,3 @@ const UserData = (props) => {
   );
 };
 export default UserData;
-// https://taxi-aeroport-minsk2.by/spasibo/
-// https://taxi-aeroport-minsk2.by/product/oplata-za-poezdku/
