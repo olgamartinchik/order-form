@@ -31,9 +31,9 @@ export const typeOfPayment = [
 ];
 export const API_KEY2 = "dd860581-f55b-46fd-b520-49cf11337c2e";
 export const API_KEY = "1c324abd-4386-42ae-95df-be1b518bad77";
-export const YOUR_SERVICE_ID = "service_n9g4nii";
-export const YOUR_TEMPLATE_ID = "template_m320dst";
-export const YOUR_PUBLIC_KEY = "oHr8NKp2rKqUfWhUt";
+export const YOUR_SERVICE_ID = "service_vmk8ez8";
+export const YOUR_TEMPLATE_ID = "template_tgs13vs";
+export const YOUR_PUBLIC_KEY = "KpRjG5omAi43q_iif";
 export const Actions = {
   ADD_FORM_DATA: "ADD_FORM_DATA",
   DELETE_FORM_DATA: "DELETE_FORM_DATA",
