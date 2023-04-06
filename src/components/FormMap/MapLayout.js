@@ -19,9 +19,6 @@ const MapLayout = (props) => {
   };
 
   const [ymapsRef, setYmapsRef] = useState(null);
-  // const [from, setFrom] = useState(null);
-  // const [to, setTo] = useState(null);
-  // const [price, setPrice] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -52,7 +49,6 @@ const MapLayout = (props) => {
     const activeRoute = route.getActiveRoute();
     let length;
     let duration;
-    // let newBoundedBy;
     let newPrice;
 
     if (activeRoute) {
@@ -60,13 +56,11 @@ const MapLayout = (props) => {
 
       duration = route.getActiveRoute().properties.get("duration").text;
 
-      // newBoundedBy = route.getActiveRoute().properties.get("boundedBy");
-
       newPrice = calculateDistance(
         Math.round(length.value / 1000),
         props.typeAuto
       );
-      // setPrice(newPrice);
+
       const balloonContentLayout = createBalloonLayout(
         ymapsRef,
         length.text,
@@ -82,8 +76,6 @@ const MapLayout = (props) => {
         price: newPrice,
         distance: length && length.text,
         time: duration,
-        // from,
-        // to,
       })
     );
   };
@@ -116,7 +108,6 @@ const MapLayout = (props) => {
     const suggestView = new ymaps.SuggestView("from");
     suggestView.events.add("select", (e) => {
       const from = e.get("item");
-      // setFrom(from.displayName);
       dispatch(
         AddFormAction({
           from: from.displayName,
@@ -126,7 +117,6 @@ const MapLayout = (props) => {
     const suggestView2 = new ymaps.SuggestView("to");
     suggestView2.events.add("select", (e) => {
       const to = e.get("item");
-      // setTo(to.displayName);
       dispatch(
         AddFormAction({
           to: to.displayName,

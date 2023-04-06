@@ -1,4 +1,6 @@
 
+@use '../../shared/styles/mixins';
+
 .details_container{
     position: relative;
     display: flex;
@@ -43,34 +45,19 @@
     flex-direction: column;
    
 }
-@mixin inputIcon ($img){
-    position: relative;
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 4px;
-        margin: auto 0;
-        width: 20px;
-        height: 20px;
-        background: $img no-repeat;
-        background-size: cover;
-      
-      } 
-}
+
 .name-input{
-    @include inputIcon(url('../../assets/user-name.svg'));  
+    @include mixins.inputIcon(url('../../assets/user-name.svg'));  
 }
 
 .email-input{
-    @include inputIcon(url('../../assets/email.svg'));  
+    @include mixins.inputIcon(url('../../assets/email.svg'));  
 }
 .phone-input{  
-    @include inputIcon(url('../../assets/phone.svg'));   
+    @include mixins.inputIcon(url('../../assets/phone.svg'));   
 }
 .date-input{
-    @include inputIcon(url('../../assets/calendar-symbol.svg')); 
+    @include mixins.inputIcon(url('../../assets/calendar-symbol.svg')); 
 }
 
 @media(max-width: 940px){

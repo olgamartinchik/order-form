@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 const Notification = (props) => {
-  const [show, setShow] = useState(props.isError);
+  const [show, setShow] = useState(true);
 
   const handleClose = () => setShow(false);
 

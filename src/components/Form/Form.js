@@ -34,7 +34,6 @@ const Form = () => {
 
   const handleBack = (e) => {
     e.preventDefault();
-    console.log("back");
     dispatch(
       AddFormAction({
         isUserData: false,
@@ -62,11 +61,11 @@ const Form = () => {
       }
     } catch (e) {
       console.log("error", e);
-      resetForm();
       setIsError(true);
+      resetForm();
       setTimeout(() => {
         setIsError(false);
-      }, 4000);
+      }, 5000);
     }
   };
   const resetForm = () => {
@@ -77,7 +76,8 @@ const Form = () => {
 
   return (
     <div className='form-wrapper'>
-      <Notification errorMessage={errorMessage} isError={isError} />
+      {isError && <Notification errorMessage={errorMessage} />}
+
       {isSubmitted && <Loader />}
       <form
         onSubmit={handleSubmit((data) => {

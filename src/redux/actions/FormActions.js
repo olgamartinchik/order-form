@@ -13,12 +13,6 @@ export const AddFormAction = (newForm) => (dispatch, getState) => {
   }
 };
 export const DeleteFormAction = () => (dispatch, getState) => {
-  // const { Form } = getState();
-
-  // Object.entries(newForm).forEach(([key, value]) => {
-  //   Form[key] = value;
-  // });
-
   dispatch({
     type: Actions.DELETE_FORM_DATA,
     payload: { from: null, to: null },

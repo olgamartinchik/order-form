@@ -28,7 +28,7 @@ const UserData = (props) => {
                 name='name'
                 {...props.register("name", {
                   required: true,
-                  // pattern: /^[A-Za-z]+$/i,
+                  pattern: /\S/,
                 })}
               />
             </div>
@@ -43,11 +43,7 @@ const UserData = (props) => {
                 type={"email"}
                 placeholder='ivanov@gmail.com'
                 name='email'
-                {...props.register("email", {
-                  required: "Введите email",
-                  pattern:
-                    /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+.([A-Za-z]{2,4})$/,
-                })}
+                {...props.register("email")}
               />
             </div>
             <span className='error'>

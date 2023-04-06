@@ -1,10 +1,12 @@
+@use '../../shared/styles/colors';
+@use '../../shared/styles/mixins';
+
 .form-container{
     display: flex;
     align-items: baseline;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10%;
-    
+    gap: 10%;    
 }
 .rout-container{
     display: flex;
@@ -12,15 +14,11 @@
     align-items: flex-start;
     flex: 1;
     width: 100%;
-   
-    
-
 }
 .auto-type{
     display: flex;
     flex-direction: column;
     width: 100%;
-    // gap: .5rem;
     margin-bottom: 1rem;
 }
 
@@ -28,8 +26,7 @@
     text-align: start;
 }
 .price_detail{
-    color: red;
- 
+    color: colors.$error-color; 
 }
 .hidden{
     height: 0;
@@ -42,15 +39,12 @@
 }
 
 .continue_container{
-    display: flex;
+    @include mixins.flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     p{
         margin-bottom: 0.5rem;
-    }
-  
+    }  
 }
 @media(max-width: 940px){
     .form-container{

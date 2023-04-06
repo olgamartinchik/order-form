@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Rout.scss";
+import "./Route.scss";
 import MapLayout from "../FormMap/MapLayout";
 import { typesAuto } from "../../utils/constants";
 import { useSelector } from "react-redux";
@@ -22,8 +22,6 @@ const Route = (props) => {
         isUserData: true,
       })
     );
-
-    console.log("state");
   };
   const handleTypeAuto = (e) => {
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
@@ -43,7 +41,6 @@ const Route = (props) => {
         })
       );
     }
-    // console.log("typeAuto", typeAuto);
   };
 
   return (

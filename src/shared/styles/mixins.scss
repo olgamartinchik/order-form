@@ -1,0 +1,31 @@
+@mixin inputIcon ($img){
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 4px;
+        margin: auto 0;
+        width: 20px;
+        height: 20px;
+        background: $img no-repeat;
+        background-size: cover;
+      
+      } 
+}
+@mixin flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin wrapper{
+    position: absolute;   
+    background-color: transparent;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    @include flex;
+}
