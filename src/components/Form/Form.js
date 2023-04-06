@@ -43,11 +43,14 @@ const Form = () => {
   const onSubmit = async (data) => {
     try {
       setIsSubmitted(true);
+      console.log("data", data);
+      console.log("formState", formState);
       const result = await emailjs.send(
         YOUR_SERVICE_ID,
         YOUR_TEMPLATE_ID,
         {
           ...data,
+          auto: formState.auto,
           from: `Из ${formState.from} в ${formState.to}`,
           detail: `${formState.price} б.р., ${formState.distance}`,
         },
@@ -65,7 +68,7 @@ const Form = () => {
       resetForm();
       setTimeout(() => {
         setIsError(false);
-      }, 5000);
+      }, 7000);
     }
   };
   const resetForm = () => {
@@ -80,8 +83,8 @@ const Form = () => {
 
       {isSubmitted && <Loader />}
       <form
-        onSubmit={handleSubmit((data) => {
-          onSubmit(data);
+        onSubmit={handleSubmit(async (data) => {
+          await onSubmit(data);
         })}
       >
         <Route register={register} errors={errors} />

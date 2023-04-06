@@ -76,6 +76,7 @@ const MapLayout = (props) => {
         price: newPrice,
         distance: length && length.text,
         time: duration,
+        auto: props.typeAuto,
       })
     );
   };
