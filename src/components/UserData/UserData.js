@@ -19,23 +19,20 @@ const UserData = (props) => {
         <h2>Контактная информация</h2>
         <div className='user-data'>
           <div>
-            <label className='label'>Имя *</label>
+            <label className='label'>Имя</label>
             <div className='name-input'>
               <input
                 className='input'
                 type={"text"}
                 placeholder='Иван'
                 name='name'
-                {...props.register("name", {
-                  required: true,
-                  pattern: /\S/,
-                })}
+                {...props.register("name")}
               />
             </div>
 
-            <span className='error'>
+            {/* <span className='error'>
               {props.errors.name ? "Введите имя" : ""}
-            </span>
+            </span> */}
             <label className='label'>E-mail</label>
             <div className='email-input'>
               <input
@@ -46,9 +43,9 @@ const UserData = (props) => {
                 {...props.register("email")}
               />
             </div>
-            <span className='error'>
+            {/* <span className='error'>
               {props.errors.email ? "Введите email" : ""}
-            </span>
+            </span> */}
           </div>
           <div>
             <label className='label'>Телефон *</label>
@@ -63,28 +60,25 @@ const UserData = (props) => {
                   pattern: /\S/,
                 })}
               />
+              <span className='error'>
+                {props.errors.phone ? "Введите телефон" : ""}
+              </span>
             </div>
-            <span className='error'>
-              {props.errors.phone ? "Введите телефон" : ""}
-            </span>
 
-            <label className='label'>Дата и время поездки *</label>
+            <label className='label'>Дата и время поездки</label>
             <div className='date-input'>
               <input
                 className='input'
                 type={"text"}
                 placeholder='25.12 в 14:00'
                 name='date'
-                {...props.register("date", {
-                  required: "Введите дату поездки",
-                  pattern: /\S/,
-                })}
+                {...props.register("date")}
               />
             </div>
 
-            <span className='error'>
+            {/* {/* <span className='error'>
               {props.errors.date ? "Введите дату поездки" : ""}
-            </span>
+            </span> */}
           </div>
         </div>
         <div className='notes-container'>

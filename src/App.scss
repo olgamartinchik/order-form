@@ -43,10 +43,12 @@
   cursor: pointer;
 }
 .error{
+  position: absolute;
+  left: 0;
+  top: 100%;
   color: colors.$error-color;
   font-size: 14px;
-  height: 23px;
-  padding: 2px 0;
+ 
 }
 .title{
   margin-bottom: 1rem;
