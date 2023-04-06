@@ -33,7 +33,7 @@ const Form = () => {
   } = useForm({ mode: "onChange" });
 
   const handleBack = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(
       AddFormAction({
         isUserData: false,

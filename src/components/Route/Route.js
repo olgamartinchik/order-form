@@ -14,8 +14,8 @@ const Route = (props) => {
   const dispatch = useDispatch();
 
   const handleContinue = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+    // e.preventDefault();
+    // e.stopPropagation();
     console.log("errors", props.errors);
     dispatch(
       AddFormAction({
@@ -24,7 +24,15 @@ const Route = (props) => {
     );
   };
   const handleTypeAuto = (e) => {
+    if (e.target.checked) {
+      console.log("e.target.value", e.target.value);
+    }
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
+    dispatch(
+      AddFormAction({
+        auto: e.target.value,
+      })
+    );
 
     if (parseInt(state.distance)) {
       const price = calculateDistance(parseInt(state.distance), e.target.value);
@@ -37,7 +45,6 @@ const Route = (props) => {
       dispatch(
         AddFormAction({
           price,
-          auto: e.target.value,
         })
       );
     }
@@ -56,13 +63,12 @@ const Route = (props) => {
           {typesAuto.map((type, ind) => (
             <div className='form_radio' key={ind.toString()}>
               <input
+                {...props.register("auto")}
                 id={`auto-${ind}`}
                 type={"radio"}
                 name='auto'
-                {...props.register("auto")}
                 value={Object.keys(type)[0]}
                 defaultChecked={ind === 0 && "checked"}
-                // checked={!!state.auto || (ind === 0 && "checked")}
                 onChange={handleTypeAuto}
               />
               <label className='label radio-label' htmlFor={`auto-${ind}`}>

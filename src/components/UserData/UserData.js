@@ -107,12 +107,12 @@ const UserData = (props) => {
           {typeOfPayment.map((type, ind) => (
             <div className='form_radio' key={ind.toString()}>
               <input
+                {...props.register("payment")}
                 id={`payment-${ind}`}
                 type={"radio"}
                 name='payment'
                 value={Object.keys(type)[0]}
                 defaultChecked={ind === 0 && "checked"}
-                {...props.register("payment")}
                 onChange={handleTypePayment}
               />
               <label htmlFor={`payment-${ind}`} className='label radio-label'>
