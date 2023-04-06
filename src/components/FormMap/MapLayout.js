@@ -77,6 +77,7 @@ const MapLayout = (props) => {
         distance: length && length.text,
         time: duration,
         auto: props.typeAuto,
+        payment: "cash",
       })
     );
   };

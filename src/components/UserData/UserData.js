@@ -5,6 +5,7 @@ import { AddFormAction } from "../../redux/actions/FormActions";
 
 const UserData = (props) => {
   const dispatch = useDispatch();
+
   const handleTypePayment = (e) => {
     dispatch(
       AddFormAction({

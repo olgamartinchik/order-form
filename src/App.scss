@@ -40,6 +40,7 @@
  
   width: 100%;
   color: colors.$subtitle-color;
+  margin-bottom: 0.5rem;
   cursor: pointer;
 }
 .error{
@@ -75,7 +76,7 @@
         width: 1.4em;
         height: 1.4em;
         position: relative;
-        top: .1rem;
+        bottom: 0.15rem;
         margin-right: 1em; 
         vertical-align: top;
         cursor: pointer;
