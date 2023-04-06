@@ -30,9 +30,6 @@ const UserData = (props) => {
               />
             </div>
 
-            {/* <span className='error'>
-              {props.errors.name ? "Введите имя" : ""}
-            </span> */}
             <label className='label'>E-mail</label>
             <div className='email-input'>
               <input
@@ -43,9 +40,6 @@ const UserData = (props) => {
                 {...props.register("email")}
               />
             </div>
-            {/* <span className='error'>
-              {props.errors.email ? "Введите email" : ""}
-            </span> */}
           </div>
           <div>
             <label className='label'>Телефон *</label>
@@ -75,10 +69,6 @@ const UserData = (props) => {
                 {...props.register("date")}
               />
             </div>
-
-            {/* {/* <span className='error'>
-              {props.errors.date ? "Введите дату поездки" : ""}
-            </span> */}
           </div>
         </div>
         <div className='notes-container'>
