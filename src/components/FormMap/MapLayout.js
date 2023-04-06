@@ -95,7 +95,7 @@ const MapLayout = (props) => {
         newPrice +
         "</span>" +
         " б.р.</span><br/>" +
-        '<span  style="color: red; font-style: italic">*Стоимость уточняйте у оператора</span>'
+        '<span  style="color: red; font-style: italic">* Итоговую стоимость уточняйте у оператора</span>'
     );
   };
   const openBallon = (balloonContentLayout, route, activeRoute) => {
