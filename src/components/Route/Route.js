@@ -24,9 +24,6 @@ const Route = (props) => {
     );
   };
   const handleTypeAuto = (e) => {
-    if (e.target.checked) {
-      console.log("e.target.value", e.target.value);
-    }
     setTypeAuto((typeAuto) => (typeAuto = e.target.value));
     dispatch(
       AddFormAction({

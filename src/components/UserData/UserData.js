@@ -19,7 +19,7 @@ const UserData = (props) => {
         <h2>Контактная информация</h2>
         <div className='user-data'>
           <div>
-            <label className='label'>Имя</label>
+            <label className='label'>Имя *</label>
             <div className='name-input'>
               <input
                 className='input'
@@ -51,7 +51,7 @@ const UserData = (props) => {
             </span>
           </div>
           <div>
-            <label className='label'>Телефон</label>
+            <label className='label'>Телефон *</label>
             <div className='phone-input'>
               <input
                 className='input'
@@ -59,16 +59,16 @@ const UserData = (props) => {
                 placeholder='+375(29)0000000'
                 name='phone'
                 {...props.register("phone", {
-                  required: "Введите телефона",
+                  required: true,
                   pattern: /\S/,
                 })}
               />
             </div>
             <span className='error'>
-              {props.errors.phone ? "Введите телефона" : ""}
+              {props.errors.phone ? "Введите телефон" : ""}
             </span>
 
-            <label className='label'>Дата и время поездки</label>
+            <label className='label'>Дата и время поездки *</label>
             <div className='date-input'>
               <input
                 className='input'

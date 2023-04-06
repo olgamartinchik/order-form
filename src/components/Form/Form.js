@@ -43,8 +43,7 @@ const Form = () => {
   const onSubmit = async (data) => {
     try {
       setIsSubmitted(true);
-      console.log("data", data);
-      console.log("formState", formState);
+
       const result = await emailjs.send(
         YOUR_SERVICE_ID,
         YOUR_TEMPLATE_ID,
@@ -58,7 +57,6 @@ const Form = () => {
         YOUR_PUBLIC_KEY
       );
       if (result) {
-        console.log("result", result.text);
         window.location.href = "https://taxi-aeroport-minsk2.by/spasibo/";
 
         resetForm();
