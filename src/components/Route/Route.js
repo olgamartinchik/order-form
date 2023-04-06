@@ -77,10 +77,6 @@ const Route = (props) => {
 
         {state.price && state.distance && (
           <div className='continue_container'>
-            {/* {props.errors.from || props.errors.to ? (
-              <span className='error'>* Уточните маршрут</span>
-            ) : (
-              <> */}
             <p className='text-center fw-bold'>
               Стоимость трансфера:{" "}
               <span className='nowrap'>~{state.price} б.р.</span>{" "}
@@ -91,17 +87,11 @@ const Route = (props) => {
             <p className='subtitle price_detail'>
               * Международный трансфер просчитывается индивидуально
             </p>
-            {/* </>
-            )} */}
 
-            {/* {(props.errors.from || props.errors.to) && (
-              <span className='error'>Уточните маршрут</span>
-            )} */}
             <button
               type='button'
               className='button continue-btn'
               onClick={handleContinue}
-              // disabled={props.errors.from || props.errors.to}
             >
               Далее
             </button>
