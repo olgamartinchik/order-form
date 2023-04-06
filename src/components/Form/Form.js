@@ -50,6 +50,7 @@ const Form = () => {
         YOUR_TEMPLATE_ID,
         {
           ...data,
+          payment: formState.payment,
           auto: formState.auto,
           from: `Из ${formState.from} в ${formState.to}`,
           detail: `${formState.price} б.р., ${formState.distance}`,
