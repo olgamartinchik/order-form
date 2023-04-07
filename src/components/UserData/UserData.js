@@ -20,7 +20,7 @@ const UserData = (props) => {
         <h2>Контактная информация</h2>
         <div className='user-data'>
           <div>
-            <label className='label'>Имя</label>
+            <label className='label user-data_label'>Имя</label>
             <div className='name-input'>
               <input
                 className='input'
@@ -31,7 +31,7 @@ const UserData = (props) => {
               />
             </div>
 
-            <label className='label'>E-mail</label>
+            <label className='label user-data_label'>E-mail</label>
             <div className='email-input'>
               <input
                 className='input'
@@ -43,7 +43,7 @@ const UserData = (props) => {
             </div>
           </div>
           <div>
-            <label className='label'>Телефон *</label>
+            <label className='label user-data_label'>Телефон *</label>
             <div className='phone-input'>
               <input
                 className='input'
@@ -60,7 +60,9 @@ const UserData = (props) => {
               </span>
             </div>
 
-            <label className='label'>Дата и время поездки</label>
+            <label className='label user-data_label'>
+              Дата и время поездки
+            </label>
             <div className='date-input'>
               <input
                 className='input'
@@ -73,7 +75,7 @@ const UserData = (props) => {
           </div>
         </div>
         <div className='notes-container'>
-          <label className='label'>Детали поездки</label>
+          <label className='label user-data_label'>Детали поездки</label>
           <textarea
             className='input notes'
             placeholder='Количество багажа; Hомер рейса / поезда, вагона;  Детское кресло'
