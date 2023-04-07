@@ -12,8 +12,8 @@ const MapLayout = (props) => {
   const yMapsState = {
     apikey: API_KEY,
     ns: "use-load-option",
-    // load: "Map,Placemark,Polygon",
-    load: "package.full",
+    load: "Map,Placemark",
+    // load: "package.full",
   };
   const mapState = {
     center: [53.902735, 27.555696],
@@ -54,60 +54,81 @@ const MapLayout = (props) => {
     let duration;
     let newPrice;
     let pathsObjects;
-    let newDoundedBy;
 
     if (activeRoute) {
       length = route.getActiveRoute().properties.get("distance");
       duration = route.getActiveRoute().properties.get("duration").text;
-      console.log("minskPolygon", minskPolygon);
-      newDoundedBy = route.getActiveRoute().properties.get("boundedBy");
-      console.log("newDoundedBy", newDoundedBy);
 
-      // const edges = [];
-      const responseRoute = await ymapsRef.route(newDoundedBy);
-      console.log("responseRoute", responseRoute);
+      const edges = [];
+      const responseRoute = await ymapsRef.route([state.from, state.to]);
+
       pathsObjects = ymapsRef.geoQuery(responseRoute.getPaths());
-      console.log("pathsObjects", pathsObjects);
-      // pathsObjects.each((path) => {
-      //   const coordinates = path.geometry.getCoordinates();
-      //   console.log("coordinates", coordinates);
-      //   for (var i = 1, l = coordinates.length; i < l; i++) {
-      //     edges.push({
-      //       type: "LineString",
-      //       coordinates: [coordinates[i], coordinates[i - 1]],
-      //     });
-      //     console.log("edges", edges);
-      //   }
-      // });
-      // var routeObjects = ymapsRef
-      //     .geoQuery(edges)
-      //     .add(route.getWayPoints())
-      //     .add(route.getViaPoints())
-      //     .setOptions("strokeWidth", 3)
-      //     .addToMap(ymapsRef),
-      //   // Найдем все объекты, попадающие внутрь МКАД.
-      //   objectsInMoscow = routeObjects.searchInside(minskPolygon),
-      //   // Найдем объекты, пересекающие МКАД.
-      //   boundaryObjects = routeObjects.searchIntersect(minskPolygon);
-      // // Раскрасим в разные цвета объекты внутри, снаружи и пересекающие МКАД.
+
+      pathsObjects.each((path) => {
+        const coordinates = path.geometry.getCoordinates();
+        // console.log("coordinates", coordinates);
+        for (var i = 1, l = coordinates.length; i < l; i++) {
+          edges.push({
+            type: "LineString",
+            coordinates: [coordinates[i], coordinates[i - 1]],
+          });
+          // console.log("edges", edges);
+        }
+      });
+      mapRef.current.geoObjects.add(minskPolygon);
+      console.log("mapRef", mapRef);
+      const routeObjects = ymapsRef
+        .geoQuery(edges)
+        // .add(responseRoute.getWayPoints())
+        // .add(responseRoute.getViaPoints())
+        // .setOptions("strokeWidth", 3)
+        .addToMap(mapRef.current);
+
+      console.log(
+        "routeObjects,",
+        routeObjects,
+        responseRoute.getWayPoints(),
+        responseRoute.getViaPoints()
+      );
+      // Найдем все объекты, попадающие внутрь МКАД.
+      const objectsInMinsk = routeObjects.searchInside(minskPolygon);
+      // Найдем объекты, пересекающие МКАД.
+      const boundaryObjects = routeObjects.searchIntersect(minskPolygon);
+
+      // Раскрасим в разные цвета объекты внутри, снаружи и пересекающие МКАД.
       // boundaryObjects.setOptions({
       //   strokeColor: "#06ff00",
       //   preset: "islands#greenIcon",
       // });
-      // objectsInMoscow.setOptions({
+      // objectsInMinsk.setOptions({
       //   strokeColor: "#ff0005",
       //   preset: "islands#redIcon",
       // });
-      // // Объекты за пределами МКАД получим исключением полученных выборок из
-      // // исходной.
-      // routeObjects.remove(objectsInMoscow).remove(boundaryObjects).setOptions({
-      //   strokeColor: "#0010ff",
-      //   preset: "islands#blueIcon",
-      // });
+
+      // Объекты за пределами МКАД получим исключением полученных выборок из
+      // исходной.
+      let distanceOutsideMinsk = 0;
+      routeObjects
+        .remove(objectsInMinsk)
+        .remove(boundaryObjects)
+        // .setOptions({
+        //   strokeColor: "#0010ff",
+        //   preset: "islands#blueIcon",
+        // })
+        .each((path, i) => {
+          // console.log("path", path.geometry.getDistance());
+          if (path && i < 10) {
+            distanceOutsideMinsk += path.geometry.getDistance();
+            // distanceOutsideMinsk = length ? distanceOutsideMinsk + length : 0;
+            // dist3 += Math.round(length);
+            console.log("distanceOutsideMinsk", distanceOutsideMinsk);
+          }
+        });
 
       newPrice = calculateDistance(
         Math.round(length.value / 1000),
-        props.typeAuto
+        props.typeAuto,
+        distanceOutsideMinsk
       );
 
       // add balloon
@@ -128,7 +149,6 @@ const MapLayout = (props) => {
         time: duration,
         auto: props.typeAuto,
         payment: "cash",
-        newDoundedBy,
       })
     );
   };
@@ -157,10 +177,12 @@ const MapLayout = (props) => {
   const loadSuggest = (ymaps) => {
     setYmapsRef(ymaps);
     // console.log("minskData", minskData);
+
     const polygon = new ymaps.Polygon(minskData.coordinates);
     // console.log("polygon1", polygon, "map1", mapRef);
-    polygon.options.set("visible", true);
-    mapRef.current.geoObjects.add(polygon);
+    polygon.options.set("visible", false);
+    // mapRef.current.geoObjects.add(polygon);
+
     // console.log("polygon2s", polygon, "map2", mapRef);
     setMinskPolygon(polygon);
 
@@ -215,13 +237,18 @@ const MapLayout = (props) => {
             width={"100%"}
             height={"300px"}
             modules={[
-              "geocode",
+              // "geocode",
+              // "multiRouter.MultiRoute",
+              "route",
+              "geoQuery",
               "SuggestView",
               "Polygon",
               "templateLayoutFactory",
+              "GeoObject",
               "GeoObjectArray",
-              "ObjectManager",
+              "GeoObjectCollection",
               "GeoQueryResult",
+              "ObjectManager",
             ]}
             controls={["routePanelControl"]}
           >
@@ -231,6 +258,11 @@ const MapLayout = (props) => {
                 visible: false,
                 reverseGeocoding: true,
                 allowSwitch: false,
+              }}
+              state={{
+                type: "masstransit",
+                fromEnabled: true,
+                toEnabled: true,
               }}
               modules={["templateLayoutFactory"]}
             />

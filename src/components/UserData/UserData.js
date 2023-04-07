@@ -60,7 +60,7 @@ const UserData = (props) => {
               </span>
             </div>
 
-            <label className='label user-data_label'>
+            <label className='label user-data_label text-nowrap'>
               Дата и время поездки
             </label>
             <div className='date-input'>

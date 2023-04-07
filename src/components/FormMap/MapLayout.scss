@@ -4,9 +4,7 @@
 }
 .inputs_container{
     @include mixins.flex;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
+
     flex-direction: column;
     width: 100%;
     gap: 1.5rem;
@@ -15,7 +13,7 @@
 }
 .from-control, .to-control{
     position: relative;
-    background-image: url('../../assets/map-gps.svg');
+    background-image: url('../../media/map-gps.svg');
     background-size: 20px 20px; 
     background-repeat: no-repeat;
     background-position: 99%;

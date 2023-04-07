@@ -6,7 +6,14 @@ export const typesAuto = [
   { vip: "VIP" },
   { minibus: "Микроавтобус до 20 пассажиров" },
 ];
-
+export const MINSK_TARIFF = {
+  standard: 30,
+  comfort: 40,
+  minivan: 50,
+  business: 70,
+  vip: 120,
+  minibus: 80,
+};
 export const BASE_TARIFF_LESS_50_KM = {
   standard: 50,
   comfort: 60,

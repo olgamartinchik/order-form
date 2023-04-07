@@ -53,17 +53,17 @@
     margin-bottom: .5rem;
 }
 .name-input{
-    @include mixins.inputIcon(url('../../assets/user-name.svg'));  
+    @include mixins.inputIcon(url('../../media/user-name.svg'));  
 }
 
 .email-input{
-    @include mixins.inputIcon(url('../../assets/email.svg'));  
+    @include mixins.inputIcon(url('../../media/email.svg'));  
 }
 .phone-input{  
-    @include mixins.inputIcon(url('../../assets/phone.svg'));   
+    @include mixins.inputIcon(url('../../media/phone.svg'));   
 }
 .date-input{
-    @include mixins.inputIcon(url('../../assets/calendar-symbol.svg')); 
+    @include mixins.inputIcon(url('../../media/calendar-symbol.svg')); 
 }
 
 @media(max-width: 940px){
