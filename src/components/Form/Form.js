@@ -58,6 +58,7 @@ const Form = () => {
       );
       if (result) {
         window.location.href = "https://taxi-aeroport-minsk2.by/spasibo/";
+        // window.location.replace("https://taxi-aeroport-minsk2.by/spasibo/");
 
         resetForm();
       }

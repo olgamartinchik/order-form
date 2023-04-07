@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "bootstrap": "^5.2.3",
+    "json-loader": "^0.5.7",
     "react-bootstrap": "^2.7.2"
   }
 }
