@@ -25,8 +25,7 @@ export const MapLayout = (props) => {
   const [ymapsRef, setYmapsRef] = useState(null);
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
-  const [fromCoord, setFromCoord] = useState(null);
-  const [toCoord, setToCoord] = useState(null);
+
   const [routeModel, setRouteModel] = useState(null);
   // const [distInside, setDistInside] = useState(0);
   // const [distOutside, setDistOutside] = useState(0);
