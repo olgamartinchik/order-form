@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Route.scss";
-import MapLayout from "../FormMap/MapLayout";
+import { MapLayout } from "../FormMap/MapLayout";
 import { typesAuto } from "../../utils/constants";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
