@@ -217,6 +217,10 @@ export const MapLayout = (props) => {
           time: duration,
           auto: props.typeAuto,
           payment: "cash",
+          distanceInsideMinsk,
+          distanceOutsideMinsk,
+          coordFrom,
+          coordTo,
         })
       );
     }
@@ -246,7 +250,7 @@ export const MapLayout = (props) => {
   const loadSuggest = (ymaps) => {
     setYmapsRef(ymaps);
     const polygon = new ymaps.Polygon(minskData.coordinates);
-    polygon.options.set("visible", false);
+    polygon.options.set("visible", true);
     mapRef.current.geoObjects.add(polygon);
     console.log("polygon", polygon);
     setMinskPolygon(polygon);

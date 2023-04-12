@@ -32,7 +32,14 @@ const Route = (props) => {
     );
 
     if (parseInt(state.distance)) {
-      const price = calculateDistance(parseInt(state.distance), e.target.value);
+      const price = calculateDistance(
+        parseInt(state.distance),
+        e.target.value,
+        state.distanceInsideMinsk,
+        state.distanceOutsideMinsk,
+        state.coordFrom,
+        state.coordTo
+      );
 
       const balloon = document.querySelector(".ballon-price");
       if (balloon) {
