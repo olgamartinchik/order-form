@@ -9,7 +9,7 @@ export const typesAuto = [
 export const MINSK_TARIFF = {
   standard: 30,
   comfort: 40,
-  minivan: 50,
+  minivan: 60,
   business: 70,
   vip: 120,
   minibus: 80,
