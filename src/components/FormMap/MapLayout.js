@@ -85,7 +85,7 @@ export const MapLayout = (props) => {
     if (activeRoute) {
       coordFrom = routeModel.properties._data.waypoints[0].coordinates;
       coordTo = routeModel.properties._data.waypoints[1].coordinates;
-      console.log("coordFrom coordTo", coordFrom, coordTo);
+      // console.log("coordFrom coordTo", coordFrom, coordTo);
 
       let pathsObjects;
       let edges = [];
@@ -97,7 +97,7 @@ export const MapLayout = (props) => {
       mapRef.current.geoObjects.removeAll();
       mapRef.current.geoObjects.add(minskPolygon);
 
-      console.log("state [from, to]", [state.from, state.to]);
+      // console.log("state [from, to]", [state.from, state.to]);
       const points = route.model.getReferencePoints();
       if (
         state.from === points[0] &&
@@ -112,27 +112,7 @@ export const MapLayout = (props) => {
         responseRoute.requestPoints[0] === state.from &&
         responseRoute.requestPoints[1] === state.to
       ) {
-        console.log(
-          "responseRoute+++++++++++",
-          responseRoute,
-          responseRoute.requestPoints
-        );
-        console.log("ymapsRef+++++++++++", ymapsRef);
-
-        // console.log("responseRoute.getPaths()", responseRoute.getPaths());
-        // console.log(
-        //   "activeRoute.getPaths()",
-        //   activeRoute,
-        //   activeRoute.getPaths(),
-        //   route
-        // );
-
         pathsObjects = ymapsRef.geoQuery(responseRoute.getPaths());
-        // console.log("pathsObjects", pathsObjects);
-        // console.log(
-        //   "pathsObjects1111",
-        //   ymapsRef.geoQuery(activeRoute.getPaths())
-        // );
 
         pathsObjects.each((path) => {
           const coordinates = path.geometry.getCoordinates();
@@ -151,11 +131,7 @@ export const MapLayout = (props) => {
           .searchInside(minskPolygon)
           .each((path, i) => {
             if (path && i < 5) {
-              // let count = 0;
-              // count += path.geometry.getDistance();
-              // distanceInsideMinsk = count;
               distanceInsideMinsk += path.geometry.getDistance();
-              // console.log("distanceInsideMinsk", distanceInsideMinsk);
             }
           });
         // setDistInside(distanceInsideMinsk);
@@ -170,11 +146,7 @@ export const MapLayout = (props) => {
           .remove(boundaryObjects)
           .each((path, i) => {
             if (path && i < 5) {
-              // let count = 0;
-              // count += path.geometry.getDistance();
-              // distanceOutsideMinsk = count;
               distanceOutsideMinsk += path.geometry.getDistance();
-              // console.log("distanceOutsideMinsk", distanceOutsideMinsk);
             }
           });
 
@@ -202,8 +174,6 @@ export const MapLayout = (props) => {
         coordFrom,
         coordTo
       );
-      // distanceOutsideMinsk = 0;
-      // distanceInsideMinsk = 0;
       // add balloon
       const balloonContentLayout = createBalloonLayout(
         ymapsRef,
@@ -254,13 +224,13 @@ export const MapLayout = (props) => {
   const loadSuggest = (ymaps) => {
     setYmapsRef(ymaps);
     const polygon = new ymaps.Polygon(minskData.coordinates);
-    polygon.options.set("visible", true);
+    polygon.options.set("visible", false);
     mapRef.current.geoObjects.add(polygon);
-    console.log("polygon", polygon);
+    // console.log("polygon", polygon);
     setMinskPolygon(polygon);
 
     const suggestView = new ymaps.SuggestView("from");
-    console.log("suggestView", suggestView);
+    // console.log("suggestView", suggestView);
     suggestView.events.add("select", (e) => {
       const from = e.get("item");
 
