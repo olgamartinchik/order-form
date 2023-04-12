@@ -25,8 +25,8 @@ export const MapLayout = (props) => {
   const [ymapsRef, setYmapsRef] = useState(null);
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
-  // const [fromCoord, setFromCoord] = useState(null);
-  // const [toCoord, setToCoord] = useState(null);
+  const [fromCoord, setFromCoord] = useState(null);
+  const [toCoord, setToCoord] = useState(null);
   const [routeModel, setRouteModel] = useState(null);
   // const [distInside, setDistInside] = useState(0);
   // const [distOutside, setDistOutside] = useState(0);
@@ -55,12 +55,8 @@ export const MapLayout = (props) => {
     try {
       if (ref) {
         setRoutePanelControl(ref);
-        // ref.routePanel.destroy();
-        console.log("ref.routePanel", ref.routePanel);
+
         const route = await ref.routePanel.getRouteAsync();
-        // let path_0 = route.model.getRoutes()[0].getPaths()[0];
-        // console.log("path_0", path_0);
-        // console.log("getReferencePoints", route.model.getReferencePoints());
 
         setRouteModel(route.model);
 
@@ -76,21 +72,20 @@ export const MapLayout = (props) => {
       throw new Error(e);
     }
   };
-  // const getResponseRoute = async (from, to) => {
-  //   const response = ymapsRef.route([from, to]);
-  //   return response;
-  // };
+
   const handleRequestSuccess = async (route) => {
     let length;
     let duration;
     let newPrice;
+    let coordFrom;
+    let coordTo;
 
     const activeRoute = route.getActiveRoute();
-    console.log("activeRoute", activeRoute);
+    // console.log("activeRoute", activeRoute);
 
     if (activeRoute) {
-      const coordFrom = route.model.properties._data.waypoints[0].coordinates;
-      const coordTo = route.model.properties._data.waypoints[1].coordinates;
+      coordFrom = routeModel.properties._data.waypoints[0].coordinates;
+      coordTo = routeModel.properties._data.waypoints[1].coordinates;
       console.log("coordFrom coordTo", coordFrom, coordTo);
 
       let pathsObjects;
@@ -100,22 +95,6 @@ export const MapLayout = (props) => {
       // let routeObjects;
       let responseRoute = null;
 
-      // const geoObjectsLength = mapRef.current.geoObjects.getLength();
-      // if (geoObjectsLength > 1) {
-      //   console.log("x1x1x1x1x1x1x1", geoObjectsLength);
-
-      // mapRef.current.geoObjects.remove(routeObjects);
-      //   mapRef.current.geoObjects.remove(responseRoute);
-      // routeObjects.removeFromMap(ymapsRef);
-      // routeObjects.removeFromMap(mapRef.current);
-
-      //   // mapRef.current.destroy();
-      // }
-      // responseRoute.removeFromMap(ymapsRef);
-      // responseRoute.removeFromMap(mapRef.current);
-      // mapRef.current.geoObjects.remove(routeObjects);
-      // mapRef.current.geoObjects.remove(responseRoute);
-      // responseRoute.getPaths().removeAll();
       mapRef.current.geoObjects.removeAll();
       mapRef.current.geoObjects.add(minskPolygon);
 
@@ -169,10 +148,10 @@ export const MapLayout = (props) => {
           .searchInside(minskPolygon)
           .each((path, i) => {
             if (path && i < 5) {
-              let count = 0;
-              count += path.geometry.getDistance();
-              distanceInsideMinsk = count;
-              // distanceInsideMinsk += path.geometry.getDistance();
+              // let count = 0;
+              // count += path.geometry.getDistance();
+              // distanceInsideMinsk = count;
+              distanceInsideMinsk += path.geometry.getDistance();
               // console.log("distanceInsideMinsk", distanceInsideMinsk);
             }
           });
@@ -188,21 +167,19 @@ export const MapLayout = (props) => {
           .remove(boundaryObjects)
           .each((path, i) => {
             if (path && i < 5) {
-              let count = 0;
-              count += path.geometry.getDistance();
-              distanceOutsideMinsk = count;
-              // distanceOutsideMinsk += path.geometry.getDistance();
+              // let count = 0;
+              // count += path.geometry.getDistance();
+              // distanceOutsideMinsk = count;
+              distanceOutsideMinsk += path.geometry.getDistance();
               // console.log("distanceOutsideMinsk", distanceOutsideMinsk);
             }
           });
 
+        //Удаление маршрута и меток с карты и очистка данных
         routeObjects && routeObjects.removeFromMap(ymapsRef);
         routeObjects && routeObjects.removeFromMap(mapRef.current);
-
-        //Удаление маршрута и меток с карты и очистка данных
         responseRoute && mapRef.current.geoObjects.remove(responseRoute);
         routeObjects && mapRef.current.geoObjects.remove(routeObjects);
-
         for (var i = 0, l = edges.length; i < l; i++) {
           mapRef.current.geoObjects.remove(edges[i]);
         }
@@ -218,7 +195,9 @@ export const MapLayout = (props) => {
         Math.round(length.value / 1000),
         props.typeAuto,
         distanceInsideMinsk,
-        distanceOutsideMinsk
+        distanceOutsideMinsk,
+        coordFrom,
+        coordTo
       );
       // distanceOutsideMinsk = 0;
       // distanceInsideMinsk = 0;

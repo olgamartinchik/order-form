@@ -14,7 +14,7 @@ export const MINSK_TARIFF = {
   vip: 120,
   minibus: 80,
 };
-export const AIRPORT_REQUEST = "Национальный аэропорт Минск, Минск";
+export const AIRPORT_COORD = [28.03836, 53.886668];
 export const BASE_TARIFF_LESS_50_KM_AIRPORT = {
   standard: 50,
   comfort: 60,
