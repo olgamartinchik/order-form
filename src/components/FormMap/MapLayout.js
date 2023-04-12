@@ -107,7 +107,11 @@ export const MapLayout = (props) => {
         responseRoute = await ymapsRef.route([state.from, state.to]);
       }
 
-      if (responseRoute) {
+      if (
+        responseRoute &&
+        responseRoute.requestPoints[0] === state.from &&
+        responseRoute.requestPoints[1] === state.to
+      ) {
         console.log(
           "responseRoute+++++++++++",
           responseRoute,
