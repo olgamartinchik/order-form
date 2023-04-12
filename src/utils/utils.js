@@ -21,7 +21,8 @@ export const calculateDistance = (
   } else if (
     distanceInsideMinsk &&
     ((AIRPORT_COORD[0] === coordFrom[0] && AIRPORT_COORD[1] === coordFrom[1]) ||
-      (AIRPORT_COORD[0] === coordTo[0] && AIRPORT_COORD[1] === coordTo[1]))
+      (AIRPORT_COORD[0] === coordTo[0] && AIRPORT_COORD[1] === coordTo[1])) &&
+    routeLength <= 50
   ) {
     cost = BASE_TARIFF_LESS_50_KM_AIRPORT[typeAuto];
   } else if (routeLength <= 50) {
