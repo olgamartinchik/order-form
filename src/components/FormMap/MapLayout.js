@@ -259,22 +259,26 @@ export const MapLayout = (props) => {
         <div>
           <h2>Маршрут</h2>
           <div className='inputs_container'>
-            <input
-              type='text'
-              className='input from-control map-input'
-              id='from'
-              name='from'
-              placeholder='Откуда'
-              {...props.register("from", { required: true })}
-            />
-            <input
-              type='text'
-              className='input to-control map-input'
-              id='to'
-              name='to'
-              placeholder='Куда'
-              {...props.register("to", { required: true })}
-            />
+            <div className='from-control'>
+              <input
+                type='text'
+                className='input  map-input'
+                id='from'
+                name='from'
+                placeholder='Откуда'
+                {...props.register("from", { required: true })}
+              />
+            </div>
+            <div className='to-control'>
+              <input
+                type='text'
+                className='input  map-input'
+                id='to'
+                name='to'
+                placeholder='Куда'
+                {...props.register("to", { required: true })}
+              />
+            </div>
           </div>
 
           <Map

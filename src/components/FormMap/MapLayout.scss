@@ -12,11 +12,8 @@
     margin-bottom: 1rem;   
 }
 .from-control, .to-control{
-    position: relative;
-    background-image: url('../../media/map-gps.svg');
-    background-size: 20px 20px; 
-    background-repeat: no-repeat;
-    background-position: 99%;
+    width: 100%;
+    @include mixins.inputIcon("\1F6A9");
    
 }
 @media(max-width: 940px){

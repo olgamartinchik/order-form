@@ -53,17 +53,18 @@
     margin-bottom: .5rem;
 }
 .name-input{
-    @include mixins.inputIcon(url('../../media/user-name.svg'));  
+    @include mixins.inputIcon('\2705');  
 }
 
 .email-input{
-    @include mixins.inputIcon(url('../../media/email.svg'));  
+    @include mixins.inputIcon("\2709");  
 }
 .phone-input{  
-    @include mixins.inputIcon(url('../../media/phone.svg'));   
+  
+    @include mixins.inputIcon('\260E');
 }
 .date-input{
-    @include mixins.inputIcon(url('../../media/calendar-symbol.svg')); 
+    @include mixins.inputIcon('\1F4C5'); 
 }
 
 @media(max-width: 940px){
